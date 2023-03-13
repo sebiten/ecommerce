@@ -1,10 +1,15 @@
-import './App.css';
-
+import { ChakraProvider } from "@chakra-ui/react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // eslint-disable-line
+import NavBar from "./components/NavBar";
 function App() {
   return (
-    <div className="App">
-      <h1>React App</h1>
-    </div>
+    <ChakraProvider>
+      <Router>
+        <NavBar />
+        <main>{/* <Routes></Routes> */}</main>
+      </Router>
+    </ChakraProvider>
   );
 }
 
