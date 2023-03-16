@@ -54,14 +54,20 @@ const NavBar = () => {
           />
           <HStack>
             <Link as={ReactLink} to="/">
-              <Flex alignItems="center">
+              <Flex alignItems="center"
+              gap={2}
+              >
                 <Icon as={GiTechnoHeart} w={8} h={8} color="orange.400" />
                 <Text fontSize="xl" fontWeight="bold">
                   Tech Lines
                 </Text>
               </Flex>
             </Link>
-            <HStack>
+            <HStack
+              as={"nav"}
+              spacing={4}
+              display={{ base: "none", md: "flex" }}
+            >
               {links.map((link) => (
                 <NavLink key={link.linkname} path={link.path}>
                   {link.linkname}
@@ -78,10 +84,50 @@ const NavBar = () => {
                 onClick={toggleColorMode}
               />
             </NavLink>
+            <Button
+              p={2}
+              to="/login"
+           
+              as={ReactLink}
+              fontSize="sm"
+              fontWeight={400}
+              variant="link"
+            >
+              Sign in
+            </Button>
+            <Button
+              to="/registration"
+              display={{ base: "none", md: "inline-flex" }}
+              as={ReactLink}
+              fontSize="sm"
+              fontWeight={400}
+              variant="link"
+              _hover={{
+                bg: "orange.400",
+              }}
+              bg="orange.500"
+              color="white"
+              p={2}
+            >
+              Sign up
+            </Button>
           </Flex>
-          <button>Sign up</button>
-          <button>Register</button>
         </Flex>
+        {isOpen ? (
+          <Box pb={4} display={{ md: "none" }}>
+            <Stack as={"nav"} spacing={4}>
+              {links.map((link) => (
+                <NavLink key={link.linkname} path={link.path}>
+                  {link.linkname}
+                </NavLink>
+              ))}
+              <NavLink
+                to="/registration"
+                key={"Sign up"}
+              >Sign up</NavLink>
+            </Stack>
+          </Box>
+        ) : null}
       </Box>
     </>
   );
