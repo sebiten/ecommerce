@@ -54,9 +54,7 @@ const NavBar = () => {
           />
           <HStack>
             <Link as={ReactLink} to="/">
-              <Flex alignItems="center"
-              gap={2}
-              >
+              <Flex alignItems="center" gap={2}>
                 <Icon as={GiTechnoHeart} w={8} h={8} color="orange.400" />
                 <Text fontSize="xl" fontWeight="bold">
                   Tech Lines
@@ -87,7 +85,6 @@ const NavBar = () => {
             <Button
               p={2}
               to="/login"
-           
               as={ReactLink}
               fontSize="sm"
               fontWeight={400}
@@ -121,10 +118,9 @@ const NavBar = () => {
                   {link.linkname}
                 </NavLink>
               ))}
-              <NavLink
-                to="/registration"
-                key={"Sign up"}
-              >Sign up</NavLink>
+              <NavLink to="/registration" key={"Sign up"}>
+                Sign up
+              </NavLink>
             </Stack>
           </Box>
         ) : null}
