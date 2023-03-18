@@ -15,6 +15,7 @@ import {
 import { Link as ReactLink } from "react-router-dom";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { GiTechnoHeart } from "react-icons/gi";
+import React from "react";
 
 const links = [
   { linkname: "Products", path: "/products" },

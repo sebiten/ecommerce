@@ -16,6 +16,7 @@ import {
 import { FiShoppingCart } from "react-icons/fi";
 import { StarIcon } from "@chakra-ui/icons";
 import { useState } from "react";
+import React from "react";
 import { Link as ReactLink } from "react-router-dom";
 
 const Rating = ({ rating, numReviews }) => {
