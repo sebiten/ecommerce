@@ -5,20 +5,22 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node server/index.js"
+    "client": "npm run start --prefix client",
+    "server": "node server/index.js",
+    "app": "concurrently npm \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sebiten/ecommerce.git"
   },
-  "author": "Sebastian Burgos",
   "license": "ISC",
+  "author": "Sebastian Burgos",
   "bugs": {
     "url": "https://github.com/sebiten/ecommerce/issues"
   },
   "homepage": "https://github.com/sebiten/ecommerce#readme",
   "dependencies": {
+    "concurrently": "^7.6.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^7.0.2"
