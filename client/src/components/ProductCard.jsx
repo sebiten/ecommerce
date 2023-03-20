@@ -128,7 +128,7 @@ const ProductCard = ({ product }) => {
           >
             $
           </Box>
-          {product.price.toFixed(2)}
+          {product.price}
         </Box>
         <Tooltip label="Add to cart" aria-label="Add to cart">
           <Button
