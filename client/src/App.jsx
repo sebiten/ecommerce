@@ -1,17 +1,21 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import ProductsScreen from "./screens/ProductsScreen";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // eslint-disable-line
+import { ChakraProvider } from "@chakra-ui/react";
+
+
 
 function App() {
   return (
-
-        <main>
+    <ChakraProvider>
+      <Router>
         <NavBar />
-        <ProductsScreen />
-          
-        </main>
-  
+        <Routes>
+          <Route path="/" element={<ProductsScreen />} />
+        </Routes>
+      </Router>
+    </ChakraProvider>
   );
 }
 

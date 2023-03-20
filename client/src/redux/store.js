@@ -1,10 +1,10 @@
 import {  combineReducers, configureStore }  from '@reduxjs/toolkit'
+import products from './slices/products'
 
 
 
 const reducer = combineReducers({
-  // Add your reducers here
-  
+    products,
 })
 
 export default configureStore({
