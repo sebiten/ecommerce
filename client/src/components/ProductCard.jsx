@@ -19,7 +19,7 @@ import { useState } from "react";
 import React from "react";
 import { Link as ReactLink } from "react-router-dom";
 
-const Rating = ({ rating, numReviews }) => {
+const Rating = ({ rating, numberOfReviews }) => {
   const { iconSize, setIconSize } = useState("14px");
   return (
     <Flex>
@@ -49,7 +49,7 @@ const Rating = ({ rating, numReviews }) => {
         fontWeight={500}
         lineHeight="shorter"
       >
-        {`${numReviews} ${numReviews === 1 ? "review" : "reviews"}`}
+        {`${numberOfReviews} ${numberOfReviews === 1 ? "review" : "reviews"}`}
       </Text>
     </Flex>
   );
@@ -68,7 +68,7 @@ const ProductCard = ({ product }) => {
       shadow="lg"
       position={"relative"}
     >
-      {product.isNew && (
+      {product.productIsNew && (
         <Circle
           size="10px"
           position="absolute"
@@ -93,7 +93,7 @@ const ProductCard = ({ product }) => {
             Sold out
           </Badge>
         )}
-        {product.isNew && (
+        {product.productIsNew && (
           <Badge
             borderRadius="full"
             px="2"
@@ -117,7 +117,7 @@ const ProductCard = ({ product }) => {
         </Link>
       </Flex>
       <Flex justifyContent="space-space-between" alignContent="center" py="2">
-        <Rating rating={product.rating} numReviews={product.numReviews} />
+        <Rating rating={product.rating} numberOfReviews={product.numberOfReviews} />
       </Flex>
       <Flex justifyContent="space-between">
         <Box fontSize="2xl" color={useColorModeValue("gray.800", "gray.200")}>
@@ -128,7 +128,7 @@ const ProductCard = ({ product }) => {
           >
             $
           </Box>
-          {product.price}
+          {parseFloat(product.price).toFixed(2)}
         </Box>
         <Tooltip label="Add to cart" aria-label="Add to cart">
           <Button
