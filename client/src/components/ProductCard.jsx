@@ -12,12 +12,15 @@ import {
   HStack,
   Text,
   Image,
+  useToast,
 } from "@chakra-ui/react";
 import { FiShoppingCart } from "react-icons/fi";
 import { StarIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import React from "react";
 import { Link as ReactLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartItem } from "../redux/actions/cartActions";
 
 const Rating = ({ rating, numberOfReviews }) => {
   const { iconSize, setIconSize } = useState("14px");
@@ -56,6 +59,28 @@ const Rating = ({ rating, numberOfReviews }) => {
 };
 
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+  const toast = useToast();
+  const cartInfo = useSelector((state) => state.cart);
+  const { cart } = cartInfo;
+
+  const addItem = (id) => {
+    if (cart.some((cartItem) => cartItem.id === id)) {
+      toast({
+        description: "Item is already in your cart",
+        status: "error",
+        isClosable: true,
+      });
+    } else {
+      dispatch(addCartItem(id, 1));
+      toast({
+        description: "Item has been added to your cart",
+        status: "success",
+        isClosable: true,
+      });
+    }
+  };
+
   return (
     <Stack
       p={2}
@@ -117,7 +142,10 @@ const ProductCard = ({ product }) => {
         </Link>
       </Flex>
       <Flex justifyContent="space-space-between" alignContent="center" py="2">
-        <Rating rating={product.rating} numberOfReviews={product.numberOfReviews} />
+        <Rating
+          rating={product.rating}
+          numberOfReviews={product.numberOfReviews}
+        />
       </Flex>
       <Flex justifyContent="space-between">
         <Box fontSize="2xl" color={useColorModeValue("gray.800", "gray.200")}>
@@ -138,6 +166,7 @@ const ProductCard = ({ product }) => {
             variant="ghost"
             size="sm"
             rightIcon={<FiShoppingCart />}
+            onClick={() => addItem(product._id)}
           >
             Add
           </Button>

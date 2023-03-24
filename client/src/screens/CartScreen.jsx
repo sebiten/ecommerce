@@ -4,18 +4,25 @@ import {
   Heading,
   Link,
   Stack,
-  useColorModeValue,
+  useColorModeValue as mode,
   Spinner,
   Alert,
   AlertTitle,
   AlertIcon,
   AlertDescription,
   Wrap,
+  HStack,
 } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
 import React from "react";
+import { useSelector } from "react-redux";
 
 function CartScreen() {
+  const cardInfo = useSelector((state) => state.cart);
+  const { cart, loading, error } = cardInfo;
+
+  const getHeadingContent = () => (cart.length > 0 ? "Shopping Cart" : "Cart");
+
   return (
     <Wrap spacing="30px" justify="center" minHeight="100vh">
       {loading ? (
@@ -46,7 +53,43 @@ function CartScreen() {
           </AlertDescription>
         </Alert>
       ) : (
-        <p>Cart</p>
+        <Box
+          maxW={{ base: "3xl", lg: "7xl" }}
+          mx="auto"
+          px={{ base: "4", md: "8", lg: "12" }}
+          py={{ base: "6", md: "8", lg: "12" }}
+        >
+          <Stack
+            direction={{ base: "column", lg: "row" }}
+            align={{ lg: "flex-start" }}
+            spacing={{ base: "8", md: "16" }}
+          >
+            <Stack spacing={{ base: "8", md: "10" }} flex="2">
+              <Heading
+                fontSize="2xl"
+                fontWeight="extrabold"
+                letterSpacing="tight"
+                color={useColorModeValue("gray.900", "white")}
+              >
+                Shopping Cart {getHeadingContent()}
+              </Heading>
+              <Stack spacing="6">{/* CartItem */}</Stack>
+              <Flex direction="column" align="center" flex="1">
+                {/* Cartordersummery */}
+                <HStack mt={10} fontWeight="semibold">
+                  <p>or</p>
+                  <Link
+                    as={ReactLink}
+                    to="/products"
+                    color={mode("orange.500", "orange.300")}
+                  >
+                    Continue Shopping
+                  </Link>
+                </HStack>
+              </Flex>
+            </Stack>
+          </Stack>
+        </Box>
       )}
     </Wrap>
   );
