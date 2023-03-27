@@ -16,6 +16,7 @@ import {
 import { Link as ReactLink } from "react-router-dom";
 import React from "react";
 import { useSelector } from "react-redux";
+import CartItem from "../components/CartItem";
 
 function CartScreen() {
   const cardInfo = useSelector((state) => state.cart);
@@ -73,7 +74,11 @@ function CartScreen() {
               >
                 Shopping Cart {getHeadingContent()}
               </Heading>
-              <Stack spacing="6">{/* CartItem */}</Stack>
+              <Stack spacing="6">
+                {cart.map((item) => (
+                  <CartItem key={item.product} cartItem={item} />
+                ))}
+              </Stack>
               <Flex direction="column" align="center" flex="1">
                 {/* Cartordersummery */}
                 <HStack mt={10} fontWeight="semibold">
