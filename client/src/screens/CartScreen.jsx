@@ -17,6 +17,7 @@ import { Link as ReactLink } from "react-router-dom";
 import React from "react";
 import { useSelector } from "react-redux";
 import CartItem from "../components/CartItem";
+import CartOrderSummery from "../components/CartOrderSummery";
 
 function CartScreen() {
   const cardInfo = useSelector((state) => state.cart);
@@ -70,7 +71,7 @@ function CartScreen() {
                 fontSize="2xl"
                 fontWeight="extrabold"
                 letterSpacing="tight"
-                color={useColorModeValue("gray.900", "white")}
+                color={mode("gray.900", "white")}
               >
                 Shopping Cart {getHeadingContent()}
               </Heading>
@@ -80,7 +81,7 @@ function CartScreen() {
                 ))}
               </Stack>
               <Flex direction="column" align="center" flex="1">
-                {/* Cartordersummery */}
+                <CartOrderSummery />
                 <HStack mt={10} fontWeight="semibold">
                   <p>or</p>
                   <Link

@@ -8,11 +8,11 @@ import {
   Badge,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { FaArrowRigth } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link as ReactLink, useNavigate } from "react-router-dom";
-
-const CartOrderSummer = () => {
+import React from "react";
+const CartOrderSummery = () => {
   const [buttonLoading, setButtonLoading] = useState();
   const standardShipping = Number(5.99).toFixed(2);
   const cartItems = useSelector((state) => state.cart.cart);
@@ -21,7 +21,7 @@ const CartOrderSummer = () => {
 
   const checkoutHandler = () => {
     setButtonLoading(true);
-    navigate('/checkout');
+    navigate("/checkout");
   };
 
   return (
@@ -76,4 +76,4 @@ const CartOrderSummer = () => {
   );
 };
 
-export default CartOrderSummer;
+export default CartOrderSummery;
