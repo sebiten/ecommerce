@@ -73,7 +73,12 @@ function CartScreen() {
                 letterSpacing="tight"
                 color={mode("gray.900", "white")}
               >
-                Shopping Cart {getHeadingContent()}
+                Shopping Cart
+                {cart.length > 0 && (
+                  <span
+                    style={{ fontSize: "1rem", fontWeight: "normal", marginLeft: "5px"}}
+                  >{` (${cart.length} items)`}</span>
+                )}
               </Heading>
               <Stack spacing="6">
                 {cart.map((item) => (

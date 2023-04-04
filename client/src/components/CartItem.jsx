@@ -10,7 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
-import { addCartItem } from "../redux/actions/cartActions";
+import { addCartItem, removeCartItem } from "../redux/actions/cartActions";
 import { useDispatch, useSelector } from "react-redux";
 
 const CartItem = ({ cartItem }) => {

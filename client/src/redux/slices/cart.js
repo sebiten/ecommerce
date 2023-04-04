@@ -50,14 +50,6 @@ export const cartSlice = createSlice({
       state.loading = false;
       state.error = null;
     },
-    setExpressShipping: (state, { payload }) => {
-      state.expressShipping = payload;
-      localStorage.setItem('expressShipping', payload);
-    },
-    clearCart: (state) => {
-      localStorage.removeItem('cartItems');
-      state.cart = [];
-    },
   },
 });
 
