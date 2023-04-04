@@ -4,6 +4,7 @@ import ProductsScreen from "./screens/ProductsScreen";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // eslint-disable-line
 import { ChakraProvider } from "@chakra-ui/react";
 import CartScreen from "./screens/CartScreen";
+import ProductScreen from "./screens/ProductScreen";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={<ProductsScreen />} />
+          <Route path="/products/:id" element={<ProductScreen />}></Route>
           <Route path="/products" element={<ProductsScreen />} />
           <Route path="/cart" element={<CartScreen />} />
         </Routes>
