@@ -176,7 +176,9 @@ const ProductScreen = () => {
                     </Text>
                   </Flex>
                   <Box py='12px'>{review.comment}</Box>
-                 
+                  <Text fontSize='sm' color='gray.400'>
+                    by {review.name}, {new Date(review.createdAt).toDateString()}
+                  </Text>
                 </Box>
                 ))}
               </SimpleGrid>
