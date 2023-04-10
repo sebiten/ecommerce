@@ -5,17 +5,23 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // es
 import { ChakraProvider } from "@chakra-ui/react";
 import CartScreen from "./screens/CartScreen";
 import ProductScreen from "./screens/ProductScreen";
+import Footer from "./components/Footer";
+import LandingScreen from "./screens/LandingScreen";
 
 function App() {
   return (
     <ChakraProvider>
       <Router>
         <NavBar />
-        <Routes>
-          <Route path="/products/:id" element={<ProductScreen />}></Route>
-          <Route path="/products" element={<ProductsScreen />} />
-          <Route path="/cart" element={<CartScreen />} />
-        </Routes>
+        <main>
+          <LandingScreen />
+          <Routes>
+            <Route path="/products/:id" element={<ProductScreen />}></Route>
+            <Route path="/products" element={<ProductsScreen />} />
+            <Route path="/cart" element={<CartScreen />} />
+          </Routes>
+        </main>
+        <Footer />
       </Router>
     </ChakraProvider>
   );
