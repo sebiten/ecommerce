@@ -14,8 +14,9 @@ function App() {
       <Router>
         <NavBar />
         <main>
-          <LandingScreen />
+         
           <Routes>
+            <Route path="/" element={<LandingScreen />} />
             <Route path="/products/:id" element={<ProductScreen />}></Route>
             <Route path="/products" element={<ProductsScreen />} />
             <Route path="/cart" element={<CartScreen />} />
