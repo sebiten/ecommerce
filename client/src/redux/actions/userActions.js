@@ -1,5 +1,12 @@
 import axios from "axios";
-import { setLoading, setError, userLogin, userLogout, updateUserProfile, resetUpdate } from "../slices/user.js";
+import {
+  setLoading,
+  setError,
+  userLogin,
+  userLogout,
+  updateUserProfile,
+  resetUpdate,
+} from "../slices/user.js";
 
 export const login = (email, password) => async (dispatch) => {
   dispatch(setLoading(true));
@@ -31,6 +38,7 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
+  dispatch(resetUpdate());
   localStorage.removeItem("userInfo");
   dispatch(userLogout());
 };
@@ -63,6 +71,7 @@ export const register = (name, email, password) => async (dispatch) => {
     );
   }
 };
+
 export const updateProfile =
   (id, name, email, password) => async (dispatch, getState) => {
     const {
