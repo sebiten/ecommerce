@@ -11,6 +11,8 @@ import LoginScreen from "./screens/LoginScreen";
 import RegistrationScreen from "./screens/RegistrationScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import CheckoutScreen from "./screens/CheckoutScreen";
+import PaymentSuccesModal from "./components/PaymentSuccesModal";
+import PaymentSucces from "./components/PaymentSucces";
 
 function App() {
   return (
@@ -28,7 +30,9 @@ function App() {
             ></Route>
             <Route path="/profile" element={<ProfileScreen />}></Route>
             <Route path="/checkout" element={<CheckoutScreen />}></Route>
+            <Route path="/order-success" element={<PaymentSucces />}></Route>
           </Routes>
+       
         </main>
         <Footer />
       </Router>

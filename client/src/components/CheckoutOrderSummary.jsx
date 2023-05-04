@@ -10,6 +10,7 @@ import {
   Link,
   Divider,
   useToast,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as ReactLink } from "react-router-dom";
@@ -18,11 +19,25 @@ import { createOrder, resetOrder } from "../redux/actions/orderActions";
 import { useEffect, useState, useCallback } from "react";
 import CheckoutItem from "./CheckoutItem";
 import PayPalButton from "./PayPalButton";
+import PaymentSuccesModal from "./PaymentSuccesModal";
+import PaymentErrorModal from "./PaymentErrorModal";
 
 // import { resetCart } from "../redux/actions/cartActions";
 import { useNavigate } from "react-router-dom";
+import { resetCart } from "../redux/actions/cartActions";
 
 const CheckoutOrderSummary = () => {
+  const {
+    onClose: onErrorClose,
+    onOpen: onErrorOpen,
+    isOpen: isErrorOpen,
+  } = useDisclosure();
+  const {
+    onClose: onSuccessClose,
+    onOpen: onSuccessOpen,
+    isOpen: isSuccessOpen,
+  } = useDisclosure();
+
   const colorMode = mode("gray.600", "gray.400");
   const cartItems = useSelector((state) => state.cart);
   const { cart, subtotal, expressShipping } = cartItems;
@@ -57,6 +72,7 @@ const CheckoutOrderSummary = () => {
   }, [error, shippingAddress, total, expressShipping, shipping, dispatch]);
 
   const onPaymentSuccess = async (data) => {
+    onSuccessOpen();
     dispatch(
       createOrder({
         orderItems: cart,
@@ -73,15 +89,8 @@ const CheckoutOrderSummary = () => {
     navigate("/order-success");
   };
 
-  const onPaymentError = (error) => {
-    toast({
-      description:
-        "Something went wrong during the payment process. Please try again or make sure that your PayPal account balance is enough for this purchase.",
-      status: "error",
-
-      duration: "600000",
-      isClosable: true,
-    });
+  const onPaymentError = () => {
+    onErrorOpen();
   };
 
   return (
@@ -156,6 +165,16 @@ const CheckoutOrderSummary = () => {
           Continue Shopping
         </Link>
       </Flex>
+      <PaymentErrorModal
+        onClose={onErrorClose}
+        onOpen={onErrorOpen}
+        isOpen={isErrorOpen}
+      />
+      <PaymentSuccesModal
+        onClose={onSuccessClose}
+        onOpen={onSuccessOpen}
+        isOpen={isSuccessOpen}
+      />
     </Stack>
   );
 };
