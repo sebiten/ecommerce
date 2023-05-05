@@ -6,6 +6,7 @@ import {
   userLogout,
   updateUserProfile,
   resetUpdate,
+  setUserOrders
 } from "../slices/user.js";
 
 export const login = (email, password) => async (dispatch) => {
@@ -106,4 +107,31 @@ export const updateProfile =
 
 export const resetUpdateSuccess = () => async (dispatch) => {
   dispatch(resetUpdate());
+};
+
+export const getUserOrders = () => async (dispatch, getState) => {
+  dispatch(setLoading(true));
+  const {
+    user: { userInfo },
+  } = getState();
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.get(`/api/users/${userInfo._id}`, config);
+    dispatch(setUserOrders(data));
+  } catch (error) {
+    dispatch(
+      setError(
+        error.response && error.response.data
+          ? error.response.data
+          : error.message
+          ? error.message
+          : "An unexpected error has occured. Please try again later."
+      )
+    );
+  }
 };

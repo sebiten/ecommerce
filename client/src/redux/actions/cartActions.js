@@ -44,7 +44,7 @@ export const removeCartItem = (id) => async (dispatch, getState) => {
   }
 };
 
-export const setExpress = (value) => async(dispatch) => {
+export const setExpress = (value) => async (dispatch) => {
   dispatch(setExpressShipping(value));
 }
 
