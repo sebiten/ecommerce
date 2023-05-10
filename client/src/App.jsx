@@ -14,6 +14,7 @@ import CheckoutScreen from "./screens/CheckoutScreen";
 import PaymentSuccesModal from "./components/PaymentSuccesModal";
 import PaymentSucces from "./components/PaymentSucces";
 import YourOrdersScreen from "./screens/YourOrdersScreen";
+import AdminConsoleScreen from "./screens/AdminConsoleScreen";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/checkout" element={<CheckoutScreen />}></Route>
             <Route path="/order-success" element={<PaymentSucces />}></Route>
             <Route path="/your-orders" element={<YourOrdersScreen />}></Route>
+            <Route path="/admin-console" element={<AdminConsoleScreen />}></Route>
           </Routes>
        
         </main>

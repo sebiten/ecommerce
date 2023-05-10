@@ -126,14 +126,16 @@ const Navbar = () => {
                   <MdLocalShipping />
                   <Text ml='2'>Your Orders</Text>
                 </MenuItem>
-                {userInfo.isAdmin === 'true' && (
+                {userInfo.isAdmin === true && (
                   <>
-                    <MenuDivider />
-                    <MenuItem as={ReactLink} to={'/admin-console'}>
-                      <MdOutlineAdminPanelSettings />
+                    <MenuDivider/>
+                    <MenuItem
+                      as={ReactLink} to={'/admin-console'}
+                    >
+                        <MdOutlineAdminPanelSettings/>
                       <Text ml='2'>Admin Console</Text>
                     </MenuItem>
-                  </>
+                   </>
                 )}
                 <MenuDivider />
                 <MenuItem onClick={logoutHandler}>
