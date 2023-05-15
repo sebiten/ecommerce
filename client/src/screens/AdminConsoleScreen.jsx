@@ -25,7 +25,7 @@ const AdminConsoleScreen = () => {
             </TabList>
             <TabPanels>
               <TabPanel>
-                {}
+                <UsersTab/>
               </TabPanel>
             </TabPanels>
           </Tabs>
