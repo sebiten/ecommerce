@@ -18,6 +18,8 @@ import {
   AlertDescription,
   Wrap,
   useToast,
+  Text,
+  Flex
 } from "@chakra-ui/react";
 import { CheckCircleIcon, DeleteIcon } from "@chakra-ui/icons";
 import { TbTruckDelivery } from "react-icons/tb";
@@ -62,6 +64,12 @@ const OrdersTab = () => {
   const openDeleteConfirmBox = (order) => {
     setOrderToDelete(order);
     onOpen();
+  };
+
+  
+  const onSetToDelivered = (order) => {
+    dispatch(resetErrorAndRemoval());
+    dispatch(setDelivered(order._id));
   };
 
   return (
