@@ -53,7 +53,7 @@ const ProductTableItem = ({product}) => {
 
   const openDeleteConfirmBox = () => {
     onOpen();
-  };
+  }; 
  
   return (
     <>
