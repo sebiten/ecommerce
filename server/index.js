@@ -3,10 +3,10 @@ dotenv.config();
 import express from "express";
 import connectDB from "./database.js";
 import path from "path";
-// our routes
 import productRoutes from "./routes/productRoutes.js";
-import orderRoutes from "./routes/orderRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
+
 
 connectDB();
 const app = express();
