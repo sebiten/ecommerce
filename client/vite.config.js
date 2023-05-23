@@ -6,11 +6,11 @@ import reactRefresh from '@vitejs/plugin-react-refresh';
 export default defineConfig({
   root: path.resolve(__dirname),
   build: {
-    outDir: path.resolve(__dirname, 'dist'),
-    assetsDir: 'assets',
+    outDir: path.resolve(__dirname, '../server/public'),
+    assetsDir: '',
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'src/main.jsx'),
+        main: path.resolve(__dirname, 'src/index.js'),
       },
     },
   },
