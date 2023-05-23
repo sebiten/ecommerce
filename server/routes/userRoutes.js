@@ -16,7 +16,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
 
-  if (user && (await user.matchPasswords(password))) {
+  if (user && (await user.matchPassword(password))) { // Utiliza matchPassword en lugar de matchPasswords
     res.json({
       _id: user._id,
       name: user.name,
@@ -57,6 +57,7 @@ const registerUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400).send('We could not register you.');
+    throw new Error('Something went wrong. Please check your data and try again.');
   }
 });
 
