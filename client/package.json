@@ -27,10 +27,9 @@
     "yup": "^1.0.2"
   },
   "scripts": {
-    "start": "cd client && vite",
-    "build": "cd client && npm install && npm run build"
-  }
-  ,
+    "start": "vite",
+    "build": "vite build"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
