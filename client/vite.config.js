@@ -1,7 +1,8 @@
-import { defineConfig } from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
+import path from 'path';
 
-export default defineConfig({
+export default {
+  plugins: [reactRefresh()],
   server: {
     proxy: {
       '/api': {
@@ -11,10 +12,9 @@ export default defineConfig({
       },
     },
   },
-  plugins: [reactRefresh()],
-  build: {
-    outDir: 'client/dist',
-    assetsDir: 'assets',
-    // Otras opciones de configuración para la compilación
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'), // Configura alias para rutas relativas
+    },
   },
-});
+};
