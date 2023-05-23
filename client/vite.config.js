@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 
-const defineConfig = ({
+export default defineConfig({
   server: {
     proxy: {
       '/api': {
@@ -15,4 +15,3 @@ const defineConfig = ({
   plugins: [reactRefresh()]
   // some other configuration
 })
-export default defineConfig;
