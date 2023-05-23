@@ -1,25 +1,23 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
+import productRoutes from "./routes/productRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
+import userRoutes from "./routes/useRoutes.js";
 dotenv.config();
-import connectToDatabase from './database.js';
-import express from 'express';
-import path from 'path';
+import express from "express";
+import connectDB from "./database.js";
+import path from "path";
+// our routes
 
-//Our Routes
-import productRoutes from './routes/productRoutes.js';
-import userRoutes from './routes/userRoutes.js';
-import orderRoutes from './routes/orderRoutes.js';
 
-connectToDatabase();
+connectDB();
 const app = express();
 
 app.use(express.json());
-app.use('/api/products', productRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/orders', orderRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/orders", orderRoutes);
 
-app.get('/api/config/paypal', (req, res) =>
-  res.send(process.env.PAYPAL_CLIENT_ID)
-)
+app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID));
 
 const port = process.env.PORT || 5000;
 
@@ -33,5 +31,5 @@ if (process.env.NODE_ENV == 'production') {
 }
 
 app.listen(port, () => {
-  console.log(`Server runs on poooooort ${port}.`);
+  console.log(`Server running on port ${port}`);
 });
