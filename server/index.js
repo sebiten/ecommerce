@@ -5,8 +5,8 @@ import connectDB from "./database.js";
 import path from "path";
 // our routes
 import productRoutes from "./routes/productRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
+import userRoutes from "./routes/useRoutes.js";
 
 connectDB();
 const app = express();
