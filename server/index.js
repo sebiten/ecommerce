@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import connectToDatabase from './database.js';
 import express from 'express';
-import path from 'path';
+const path = require('path');
 
 //Our Routes
 import productRoutes from './routes/productRoutes.js';
